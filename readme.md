@@ -1,5 +1,5 @@
 # Global Currency Converter & Forex Education Hub
-### Live Site: [https://github.io](https://github.io)
+### Live Site: [ https://cursor86.github.io/Forexhub/)
 
 ## Project Overview
 This project is an all-in-one financial utility developed by **SS Traders Education**. It combines a real-time, high-accuracy currency conversion tool with a comprehensive library of educational resources designed to improve global financial literacy.
