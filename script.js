@@ -1,39 +1,40 @@
-// Using the Frankfurter API - Guaranteed to work on GitHub Pages
+// PERMANENT CORS FIX: Using Frankfurter API (CORS-Enabled)
 const API_URL = "https://frankfurter.app";
 
 async function init() {
     const fromSelect = document.getElementById('fromCurrency');
     const toSelect = document.getElementById('toCurrency');
     const rateText = document.getElementById('rate-text');
+    const convertBtn = document.getElementById('convertBtn');
 
     try {
+        // 1. Fetch initial data to get currency codes
         const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Connection failed');
+        if (!response.ok) throw new Error('API unreachable');
         
         const data = await response.json();
         const codes = Object.keys(data.rates);
         
-        // Add EUR (the base) and sort alphabetically
+        // Add EUR (the base currency) and sort them
         if (!codes.includes('EUR')) codes.push('EUR');
         codes.sort();
 
-        // Clear and fill dropdowns
+        // 2. Populate Dropdowns
         fromSelect.innerHTML = "";
         toSelect.innerHTML = "";
-        
         codes.forEach(code => {
             fromSelect.add(new Option(code, code));
             toSelect.add(new Option(code, code));
         });
 
-        // Set defaults
+        // 3. Set Defaults
         fromSelect.value = "USD";
         toSelect.value = "AUD";
-        rateText.innerText = "Live Rates Active (Secure)";
+        rateText.innerText = "Live Market Connection: Active";
 
-        // Set up the click event for the Convert button
-        document.getElementById('convertBtn').onclick = async () => {
-            const amount = document.getElementById('amount').value;
+        // 4. Conversion Logic
+        convertBtn.onclick = async () => {
+            const amount = document.getElementById('amount').value || 1;
             const from = fromSelect.value;
             const to = toSelect.value;
 
@@ -43,21 +44,29 @@ async function init() {
             }
 
             try {
+                rateText.innerText = "Updating...";
                 const res = await fetch(`${API_URL}?amount=${amount}&from=${from}&to=${to}`);
                 const resultData = await res.json();
-                const result = resultData.rates[to].toLocaleString(undefined, {minimumFractionDigits: 2});
+                const result = resultData.rates[to].toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                
                 document.getElementById('converted-total').innerText = `${result} ${to}`;
+                rateText.innerText = `1 ${from} = ${(resultData.rates[to]/amount).toFixed(4)} ${to}`;
             } catch (err) {
-                rateText.innerText = "Error calculating. Try again.";
+                rateText.innerText = "Conversion error. Try again.";
             }
         };
 
+        // Run one conversion on load
+        convertBtn.click();
+
     } catch (error) {
-        console.error("Fetch error:", error);
-        rateText.innerText = "Connection blocked. Check internet or extensions.";
+        console.error("CORS Fix failed:", error);
+        rateText.innerText = "Connection blocked. Please disable Ad-Blockers and Refresh.";
     }
 }
 
-// Start the script
+// Start the application
 window.onload = init;
-
