@@ -1,48 +1,23 @@
 /**
- * Optimized Currency Converter Logic
- * Features: Parallel API Fetching & LocalStorage Caching (60-minute TTL)
+ * SS Traders Education - Final "CORS-Proof" Logic
+ * Method: JSONP (Bypasses browser security blocks)
  */
 
-const API_URL = "https://frankfurter.app";
-const CACHE_KEY = "fx_rates_cache";
-const CACHE_EXPIRY = 60 * 60 * 1000; // 60 minutes in milliseconds
-
-async function init() {
+// 1. The Callback: This runs as soon as the data arrives
+window.handleRates = function(data) {
     const fromSelect = document.getElementById('fromCurrency');
     const toSelect = document.getElementById('toCurrency');
     const rateText = document.getElementById('rate-text');
     const convertBtn = document.getElementById('convertBtn');
+    const resultDisplay = document.getElementById('converted-total');
 
-    try {
-        // 1. Check Cache First
-        const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
-        const now = new Date().getTime();
-
-        let rates;
-        if (cachedData && (now - cachedData.timestamp < CACHE_EXPIRY)) {
-            console.log("Loading rates from cache...");
-            rates = cachedData.rates;
-        } else {
-            console.log("Cache expired or empty. Fetching new rates...");
-            // Parallel Fetch: Get base rates and symbols simultaneously if needed
-            // For Frankfurter, one call usually suffices for the latest rates
-            const response = await fetch(`${API_URL}/latest`);
-            if (!response.ok) throw new Error('API unreachable');
-            const data = await response.json();
-            rates = data.rates;
-            
-            // Save to LocalStorage with timestamp
-            localStorage.setItem(CACHE_KEY, JSON.stringify({
-                rates: rates,
-                timestamp: now
-            }));
-        }
-
+    if (data && data.rates) {
+        const rates = data.rates;
         const codes = Object.keys(rates);
-        if (!codes.includes('EUR')) codes.push('EUR');
+        codes.push('USD'); // Ensure base is included
         codes.sort();
 
-        // 2. Populate Dropdowns
+        // Populate Dropdowns
         fromSelect.innerHTML = "";
         toSelect.innerHTML = "";
         codes.forEach(code => {
@@ -52,36 +27,44 @@ async function init() {
 
         fromSelect.value = "USD";
         toSelect.value = "AUD";
-        rateText.innerText = "Live Market Data: Connected";
+        rateText.innerText = "Live Market Status: Connected (Secure)";
 
-        // 3. Optimized Conversion Logic
-        convertBtn.onclick = async () => {
-            const amount = document.getElementById('amount').value || 1;
+        // Conversion Logic
+        convertBtn.onclick = () => {
+            const amt = parseFloat(document.getElementById('amount').value) || 1;
             const from = fromSelect.value;
             const to = toSelect.value;
 
-            if (from === to) {
-                document.getElementById('converted-total').innerText = `${amount} ${to}`;
-                return;
-            }
+            // Calculate via USD base: (Amount / RateOfFrom) * RateOfTo
+            const fromRate = (from === 'USD') ? 1 : rates[from];
+            const toRate = (to === 'USD') ? 1 : rates[to];
+            const finalValue = (amt / fromRate) * toRate;
 
-            // Using cached rates for instant conversion
-            const rate = (1 / (from === 'EUR' ? 1 : rates[from])) * (to === 'EUR' ? 1 : rates[to]);
-            const result = (amount * rate).toLocaleString(undefined, {
-                minimumFractionDigits: 2,
+            resultDisplay.innerText = finalValue.toLocaleString(undefined, {
+                minimumFractionDigits: 2, 
                 maximumFractionDigits: 2
-            });
-            
-            document.getElementById('converted-total').innerText = `${result} ${to}`;
-            rateText.innerText = `1 ${from} = ${rate.toFixed(4)} ${to}`;
+            }) + " " + to;
+
+            rateText.innerText = `1 ${from} = ${(toRate / fromRate).toFixed(4)} ${to}`;
         };
 
+        // Initial Calculation
         convertBtn.click();
-
-    } catch (error) {
-        console.error("Performance optimization error:", error);
-        rateText.innerText = "Connection slow. Using offline backup...";
     }
+};
+
+// 2. The Trigger: Loads the API as a Script to bypass CORS
+function connectToLiveMarket() {
+    const script = document.createElement('script');
+    // Using Open-ER-API which supports the ?callback= parameter
+    script.src = "https://er-api.com";
+    
+    script.onerror = () => {
+        document.getElementById('rate-text').innerText = "Network Shield Active. Please disable Ad-blockers.";
+    };
+    
+    document.body.appendChild(script);
 }
 
-window.onload = init;
+// Start the process
+window.onload = connectToLiveMarket;
