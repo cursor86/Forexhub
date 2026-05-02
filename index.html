@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global FX Dashboard | SS Traders Education</title>
-    <meta name="description" content="Live currency converter, 24h market trends, and forex education hub. Get real-time exchange rates and financial insights.">
+    <title>Global FX Hub | SS Traders Education</title>
+    <meta name="description" content="Professional currency converter, 24h market trends, and forex education.">
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="container">
-            <div class="logo">SS Traders <span>Education</span></div>
-            <ul class="nav-links">
-                <li><a href="#converter">Converter</a></li>
-                <li><a href="#market-data">Market Data</a></li>
-                <li><a href="#edu-hub">Education Hub</a></li>
-                <li><a href="mailto:sstraders.education@gmail.com">Contact</a></li>
-            </ul>
-        </nav>
+
+    <header class="fintech-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <span class="logo-icon">SS</span>
+                <div class="logo-text">Traders <span>Education</span></div>
+            </div>
+            <nav class="nav-dock">
+                <a href="#converter" class="nav-item active">Converter</a>
+                <a href="#market-data" class="nav-item">Trends</a>
+                <a href="#edu-hub" class="nav-item">Education</a>
+            </nav>
+            <div class="header-action">
+                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">Free Session</a>
+            </div>
+        </div>
     </header>
 
     <div class="dashboard-wrapper container">
         <!-- LEFT AD SIDEBAR -->
-        <aside class="ad-sidebar left">
+        <aside class="ad-sidebar">
             <div class="ad-box skyscraper">
                 <span class="ad-tag">Advertisement</span>
-                <!-- Google AdSense Code Here -->
             </div>
         </aside>
 
-        <!-- MAIN CONTENT COLUMN -->
+        <!-- MAIN CONTENT -->
         <main class="content-column">
             
-            <!-- 1. CONVERTER TOOL -->
+            <!-- CONVERTER -->
             <section id="converter" class="panel hero-panel">
                 <div class="panel-header">
                     <h1>Currency Converter</h1>
-                    <div id="live-indicator"><span class="pulse"></span> Live Market Connection</div>
+                    <div id="rate-text" class="live-status"><span class="pulse"></span> Initialising Live Market...</div>
                 </div>
                 <div class="converter-ui">
                     <div class="field">
@@ -46,103 +51,71 @@
                     </div>
                     <div class="selector-row">
                         <select id="fromCurrency"></select>
-                        <button id="swapBtn" title="Swap">⇄</button>
+                        <button id="swapBtn">⇄</button>
                         <select id="toCurrency"></select>
                     </div>
                     <button id="convertBtn">Convert Now</button>
                     <div class="result-display">
-                        <p id="rate-text">Initialising data...</p>
                         <h2 id="converted-total">0.00</h2>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. MARKET TRENDS TABLE -->
+            <!-- TRENDS & ANALYSIS -->
             <section id="market-data" class="panel">
-                <h2>Market Trends (Last 24h)</h2>
+                <h2>Market Trends & 24h Analysis</h2>
+                <p class="section-desc">We use <strong>Technical Analysis</strong> to track 24-hour price fluctuations. For deep fundamental news, we recommend <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.</p>
                 <div class="table-container">
                     <table>
                         <thead>
-                            <tr>
-                                <th>Pair</th>
-                                <th>Rate</th>
-                                <th>Change</th>
-                            </tr>
+                            <tr><th>Pair</th><th>Rate</th><th>24h Change</th></tr>
                         </thead>
-                        <tbody id="trends-body">
-                            <!-- Dynamic Rows -->
-                        </tbody>
+                        <tbody id="trends-body"></tbody>
                     </table>
                 </div>
             </section>
 
-            <!-- 3. INTERACTIVE CHARTS -->
-            <section class="panel chart-panel">
-                <h2>Live Market Analytics</h2>
+            <!-- CHARTS -->
+            <section class="panel">
+                <h2>Interactive Market Analytics</h2>
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://tradingview.com" async>
-                    {
-                      "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
-                      "tabs": [{ "title": "Forex", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:USDJPY"},{"s": "FX:AUDUSD"}]}]
-                    }
+                    { "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
+                      "tabs": [{ "title": "Forex", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:USDJPY"},{"s": "FX:AUDUSD"}]}] }
                     </script>
                 </div>
             </section>
 
-            <!-- 4. INTRODUCTION TO FOREX & ARTICLES -->
-            <section id="edu-hub" class="panel edu-panel">
-                <h2>Introduction to Forex Trading</h2>
-                <p>Foreign Exchange (Forex) is the largest financial market in the world, with over $7.5 trillion traded daily. It involves the simultaneous buying of one currency and selling of another. Understanding the mid-market rate is the first step to financial literacy in global trade.</p>
-                
-                <hr class="divider">
-                
-                <h3>Financial Education Library</h3>
-                <div class="article-links">
-                    <!-- 20 Links Placeholder -->
-                    <ul class="link-grid">
-                        <li><a href="#">1. Understanding Pips & Lots</a></li>
-                        <li><a href="#">2. Why the USD is King</a></li>
-                        <li><a href="#">3. Interest Rate Impacts</a></li>
-                        <li><a href="#">4. Best Time to Trade</a></li>
-                        <li><a href="#">5. Risk Management 101</a></li>
-                        <li><a href="#">6. Central Bank Roles</a></li>
-                        <li><a href="#">7. Inflation & Currency</a></li>
-                        <li><a href="#">8. Technical vs Fundamental</a></li>
-                        <li><a href="#">9. Safe Haven Assets</a></li>
-                        <li><a href="#">10. Reading Candle Charts</a></li>
-                        <li><a href="#">11. Leveraging Markets</a></li>
-                        <li><a href="#">12. Geopolitics & Forex</a></li>
-                        <li><a href="#">13. The Eurozone Economy</a></li>
-                        <li><a href="#">14. AUD & Commodities</a></li>
-                        <li><a href="#">15. Emerging Market Risk</a></li>
-                        <li><a href="#">16. Trading Psychology</a></li>
-                        <li><a href="#">17. Choosing a Broker</a></li>
-                        <li><a href="#">18. Automated Trading Bots</a></li>
-                        <li><a href="#">19. Crypto vs Forex</a></li>
-                        <li><a href="#">20. Tax on Forex Gains</a></li>
-                    </ul>
+            <!-- EDUCATION HUB -->
+            <section id="edu-hub" class="panel">
+                <h2>Forex Education Hub</h2>
+                <p>Learn the mechanics of the $7.5 trillion daily market. Our resources help you understand mid-market rates and risk management.</p>
+                <div class="link-grid">
+                    <a href="https://investopedia.com" target="_blank">1. Market Basics</a>
+                    <a href="privacy.html">2. Privacy & Data</a>
+                    <a href="#">3. Interest Rates</a>
+                    <a href="#">4. Best Trading Times</a>
+                    <a href="#">5. Risk Management</a>
+                    <!-- ... Add other links up to 20 ... -->
                 </div>
             </section>
         </main>
 
         <!-- RIGHT AD SIDEBAR -->
-        <aside class="ad-sidebar right">
+        <aside class="ad-sidebar">
             <div class="ad-box skyscraper">
                 <span class="ad-tag">Advertisement</span>
-                <!-- Google AdSense Code Here -->
             </div>
         </aside>
     </div>
 
     <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 SS Traders Education | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
-            <p>Email: sstraders.education@gmail.com</p>
+        <div class="container">
+            <p>&copy; 2026 SS Traders Education | <a href="privacy.html">Privacy Policy</a> | sstraders.education@gmail.com</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
