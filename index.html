@@ -23,7 +23,7 @@
                 <a href="#edu-hub" class="nav-item">Education</a>
             </nav>
             <div class="header-action">
-                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">
+                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">Live Session</a>
             </div>
         </div>
     </header>
@@ -42,7 +42,7 @@
                 <section id="converter" class="panel converter-panel">
                     <div class="panel-header">
                         <h2>Currency Converter</h2>
-                        <div id="rate-text" class="status-indicator">● Initialising...</div>
+                        <div id="rate-text" class="status-indicator">● Initialising Market Data...</div>
                     </div>
                     <div class="converter-ui">
                         <div class="field">
@@ -61,7 +61,7 @@
                     </div>
                 </section>
 
-                <!-- 2. VISUAL HUB PANEL (REPLACED TOP 3 PAIRS) -->
+                <!-- 2. VISUAL HUB PANEL -->
                 <section class="panel visual-hub-panel">
                     <div class="panel-header">
                         <h2>Expert Visual Guides</h2>
@@ -71,24 +71,24 @@
                         <a href="market-fundamentals.html" class="image-card">
                             <div class="card-image" style="background-image: url('https://unsplash.com');">
                                 <div class="card-overlay">
-                                    <span class="category">Education</span>
-                                    <h3>Market Fundamentals</h3>
+                                    <span class="category">Fundamentals</span>
+                                    <h3>Market Mechanics</h3>
                                 </div>
                             </div>
                         </a>
-                        <a href="risk-management.html" class="image-card">
+                        <a href="capital-protection.html" class="image-card">
                             <div class="card-image" style="background-image: url('https://unsplash.com');">
                                 <div class="card-overlay">
-                                    <span class="category">Strategy</span>
-                                    <h3>Risk Management</h3>
+                                    <span class="category">Protection</span>
+                                    <h3>Capital Safety</h3>
                                 </div>
                             </div>
                         </a>
-                        <a href="privacy.html" class="image-card">
+                        <a href="central-banks.html" class="image-card">
                             <div class="card-image" style="background-image: url('https://unsplash.com');">
                                 <div class="card-overlay">
-                                    <span class="category">Compliance</span>
-                                    <h3>Data Privacy</h3>
+                                    <span class="category">Policy</span>
+                                    <h3>Fed vs RBA</h3>
                                 </div>
                             </div>
                         </a>
@@ -96,15 +96,32 @@
                 </section>
             </div>
 
-            <!-- 3. ADVANCED ANALYTICS -->
-            <section id="market-analytics" class="panel analytics-panel">
+            <!-- 3. TOP 5 PAIRS TRENDS & ANALYSIS -->
+            <section id="market-trends" class="panel">
                 <div class="panel-header">
-                    <h2>Advanced Market Analytics</h2>
-                    <p class="section-desc">
-                        Proprietary technical analysis for major G10 currency pairs. For breaking fundamental news, we recommend 
-                        <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.
-                    </p>
+                    <h2>Top 5 Currency Pairs: 24h Analysis</h2>
+                    <p class="section-desc">Study price action and market sentiment. For real-time fundamental news, we recommend <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.</p>
                 </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pair</th>
+                                <th>Live Rate</th>
+                                <th>24h Change</th>
+                                <th>Sentiment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trends-body">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 4. ADVANCED ANALYTICS CHART -->
+            <section id="market-analytics" class="panel analytics-panel">
+                <h2>Interactive Market Analytics</h2>
                 <div class="chart-container">
                     <div class="tradingview-widget-container">
                         <div class="tradingview-widget-container__widget"></div>
@@ -116,28 +133,28 @@
                 </div>
             </section>
 
-            <!-- 4. EDUCATION HUB -->
+            <!-- 5. EDUCATION HUB -->
             <section id="edu-hub" class="panel edu-panel">
                 <div class="panel-header">
                     <h2>Financial Education Hub</h2>
-                    <p class="section-desc">Master the mechanics of the $7.5T global marketplace.</p>
+                    <p class="section-desc">Professional trading resources for global market literacy.</p>
                 </div>
                 <div class="link-grid">
                     <a href="market-fundamentals.html" class="edu-card">
                         <h4>1. Market Fundamentals</h4>
-                        <p>A deep dive into interbank mechanics.</p>
+                        <p>The mechanics of the $7.5T global marketplace.</p>
+                    </a>
+                    <a href="capital-protection.html" class="edu-card">
+                        <h4>2. Capital Protection</h4>
+                        <p>Risk management strategies to preserve wealth.</p>
+                    </a>
+                    <a href="central-banks.html" class="edu-card">
+                        <h4>3. Central Bank Roles</h4>
+                        <p>Understanding how the Fed and RBA impact rates.</p>
                     </a>
                     <a href="privacy.html" class="edu-card">
-                        <h4>2. Privacy & Compliance</h4>
-                        <p>Our transparency and cookie policy.</p>
-                    </a>
-                    <a href="risk-management.html" class="edu-card">
-                        <h4>3. Risk Management</h4>
-                        <p>Strategies for capital protection.</p>
-                    </a>
-                    <a href="#" class="edu-card">
-                        <h4>4. Central Bank Roles</h4>
-                        <p>How the Fed and RBA impact rates.</p>
+                        <h4>4. Data & Compliance</h4>
+                        <p>Our commitment to privacy and transparency.</p>
                     </a>
                 </div>
             </section>
@@ -156,8 +173,5 @@
     </footer>
 
     <script src="script.js"></script>
-</body>
-</html>
-
 </body>
 </html>
