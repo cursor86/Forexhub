@@ -3,85 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global FX Dashboard | SS Traders Education</title>
+    <title>Global FX Hub | Live Currency Converter & Forex Market Insights</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">SS Traders <span>Education</span></div>
-            <ul class="nav-links">
-                <li><a href="#converter">Converter</a></li>
-                <li><a href="#market-trends">Market Trends</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Top Live Ticker Tape -->
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://tradingview.com" async>
+        {
+        "symbols": [
+            {"proName": "FX_IDC:EURUSD", "title": "EUR to USD"},
+            {"proName": "FX_IDC:USDJPY", "title": "USD to JPY"},
+            {"proName": "FX_IDC:GBPUSD", "title": "GBP to USD"},
+            {"proName": "FX_IDC:AUDUSD", "title": "AUD to USD"}
+        ],
+        "showSymbolLogo": true, "colorTheme": "light", "isTransparent": false, "displayMode": "adaptive", "locale": "en"
+        }
+        </script>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <h1>Global FX Hub</h1>
+            <nav>
+                <a href="#converter">Converter</a>
+                <a href="#market-charts">Live Charts</a>
+                <a href="#forex-101">Forex 101</a>
+                <a href="#news">Market News</a>
+            </nav>
+        </div>
     </header>
 
     <main class="container">
-        <!-- TOP AD SLOT -->
-        <div class="ad-slot top-banner">
-            <span class="ad-label">Advertisement</span>
-            <!-- Place your AdSense code here -->
-        </div>
-
-        <div class="dashboard-grid">
-            <!-- CONVERTER SECTION -->
-            <section id="converter" class="converter-panel">
-                <div class="panel-header">
-                    <h1>Currency Converter</h1>
-                    <p id="live-status">● Live Market Connection</p>
+        <!-- Currency Converter Tool -->
+        <section id="converter" class="section">
+            <div class="card">
+                <h2>Real-Time Currency Converter</h2>
+                <div class="converter-box">
+                    <input type="number" id="amount" value="1.00" min="0">
+                    <select id="fromCurrency"></select>
+                    <button id="swapBtn">⇄</button>
+                    <select id="toCurrency"></select>
+                    <button id="convertBtn">Convert</button>
                 </div>
-                <div class="converter-ui">
-                    <div class="input-group">
-                        <label>Amount</label>
-                        <input type="number" id="amount" value="1.00">
-                    </div>
-                    <div class="selector-row">
-                        <select id="fromCurrency"></select>
-                        <button id="swapBtn">⇅</button>
-                        <select id="toCurrency"></select>
-                    </div>
-                    <button id="convertBtn">Convert Now</button>
-                    <div class="result-area">
-                        <p id="rate-text">1 USD = 0.00 ---</p>
-                        <h2 id="converted-total">0.00</h2>
-                    </div>
+                <div id="resultArea">
+                    <p id="rateText">1 USD = 0.00 ---</p>
+                    <h3 id="finalAmount">0.00</h3>
                 </div>
-            </section>
-
-            <!-- SIDEBAR AD SLOT -->
-            <div class="ad-slot sidebar-ad">
-                <span class="ad-label">Sponsored</span>
-                <!-- Place your AdSense code here -->
             </div>
-        </div>
+        </section>
 
-        <!-- 24H MARKET PERFORMANCE TABLE -->
-        <section id="market-trends" class="trends-panel">
-            <h2>Market Trends (Last 24 Hours)</h2>
-            <div class="table-responsive">
-                <table id="performance-table">
-                    <thead>
-                        <tr>
-                            <th>Currency Pair</th>
-                            <th>Current Rate</th>
-                            <th>24h Change</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="trends-body">
-                        <!-- Populated by JS -->
-                    </tbody>
-                </table>
+        <!-- Market Overview & Daily Charts -->
+        <section id="market-charts" class="section">
+            <h2>Top 30 Currencies & Market Overview</h2>
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://tradingview.com" async>
+                {
+                "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "660",
+                "tabs": [
+                    { "title": "Majors", "symbols": [{"s": "FX:EURUSD"}, {"s": "FX:USDJPY"}, {"s": "FX:GBPUSD"}, {"s": "FX:AUDUSD"}] },
+                    { "title": "Exotics", "symbols": [{"s": "FX:USDINR"}, {"s": "FX:USDZAR"}, {"s": "FX:USDMXN"}] }
+                ]
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- Forex Trading 101 Section -->
+        <section id="forex-101" class="section">
+            <div class="card educational-content">
+                <h2>Forex Trading 101: Mastering the Fundamentals</h2>
+                <p>Forex, or Foreign Exchange, is the global marketplace where currencies are traded. With a daily volume exceeding <strong>$7.5 trillion</strong>, it is the most liquid financial market in the world.</p>
+                <div class="grid">
+                    <div class="info-box">
+                        <h3>Currency Pairs</h3>
+                        <p>Currencies are always traded in pairs (e.g., EUR/USD). The first currency is the <strong>base</strong>, and the second is the <strong>quote</strong>.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Leverage & Margin</h3>
+                        <p>Leverage allows you to control large positions with a small deposit, but it significantly increases both potential profit and risk.</p>
+                    </div>
+                </div>
+                <p>For sustainable success in 2026, beginners should focus on <strong>Risk Management</strong>—never risking more than 1% of their account on a single trade.</p>
+            </div>
+        </section>
+
+        <!-- Live News Timeline -->
+        <section id="news" class="section">
+            <h2>Global Forex News Timeline</h2>
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://tradingview.com" async>
+                { "feedMode": "market", "market": "forex", "colorTheme": "light", "width": "100%", "height": "480", "locale": "en" }
+                </script>
             </div>
         </section>
     </main>
 
-    <footer class="container">
-        <p>&copy; 2026 SS Traders Education. All rates informational only.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Global FX Hub. All market data provided by <a href="https://www.tradingview.com/" target="_blank">TradingView</a>.</p>
+            <p><a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a></p>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
+
