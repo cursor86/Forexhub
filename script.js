@@ -66,3 +66,58 @@ function setupConverter(rates, status) {
 
 window.onload = init;
 
+const API = "https://frankfurter.app";
+
+async function updateMarketTrends() {
+    try {
+        // Fetch Today's rates and Yesterday's rates simultaneously
+        const [today, yesterday] = await Promise.all([
+            fetch(`${API}/latest?from=USD`).then(r => r.json()),
+            fetch(`${API}/${getYesterdayDate()}?from=USD`).then(r => r.json())
+        ]);
+
+        // Define the Top 5 Pairs against USD
+        const topPairs = ['EUR', 'GBP', 'AUD', 'JPY', 'CAD'];
+        const tbody = document.getElementById('trends-body');
+        
+        tbody.innerHTML = topPairs.map(code => {
+            const currentRate = today.rates[code];
+            const previousRate = yesterday.rates[code];
+            
+            // Calculate % Change
+            const change = (((currentRate - previousRate) / previousRate) * 100).toFixed(2);
+            
+            // Determine Sentiment
+            let sentiment = change >= 0 ? "Bullish" : "Bearish";
+            let trendClass = change >= 0 ? "trend-up" : "trend-down";
+            let arrow = change >= 0 ? "▲" : "▼";
+
+            return `
+                <tr>
+                    <td><strong>USD / ${code}</strong></td>
+                    <td>${currentRate.toFixed(4)}</td>
+                    <td class="${trendClass}">${arrow} ${Math.abs(change)}%</td>
+                    <td><span class="sentiment-badge ${trendClass}">${sentiment}</span></td>
+                </tr>
+            `;
+        }).join('');
+
+    } catch (e) {
+        console.error("Market data fetch failed", e);
+    }
+}
+
+function getYesterdayDate() {
+    const d = new Date();
+    // Use 2 days ago if today is Monday to account for weekend market close
+    const day = d.getDay();
+    const sub = (day === 1) ? 3 : 1; 
+    d.setDate(d.getDate() - sub);
+    return d.toISOString().split('T')[0];
+}
+
+// Initialise on load
+window.onload = () => {
+    initConverter(); // Your existing converter function
+    updateMarketTrends();
+};
