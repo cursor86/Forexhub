@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global FX Hub | SS Traders Education</title>
-    <meta name="description" content="Professional currency converter, top 5 currency pair trends, and forex education.">
+    <title>SST Platform | Professional FX Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
@@ -14,118 +13,115 @@
     <header class="fintech-header">
         <div class="container header-flex">
             <div class="logo">
-                <span class="logo-icon">SS</span>
+                <span class="logo-icon">SST</span>
                 <div class="logo-text">Traders <span>Education</span></div>
             </div>
             <nav class="nav-dock">
                 <a href="#converter" class="nav-item active">Converter</a>
-                <a href="#market-data" class="nav-item">Trends</a>
+                <a href="#market-analytics" class="nav-item">Analytics</a>
                 <a href="#edu-hub" class="nav-item">Education</a>
             </nav>
             <div class="header-action">
-                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">Free Session</a>
+                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">Live Session</a>
             </div>
         </div>
     </header>
 
     <div class="dashboard-wrapper container">
-        <!-- LEFT AD SIDEBAR -->
+        <!-- AD SIDEBAR (LEFT) -->
         <aside class="ad-sidebar">
-            <div class="ad-box skyscraper">
-                <span class="ad-tag">Advertisement</span>
-            </div>
+            <div class="ad-box skyscraper"><span class="ad-tag">AdSense Slot</span></div>
         </aside>
 
-        <!-- MAIN CONTENT -->
+        <!-- MAIN DASHBOARD -->
         <main class="content-column">
             
-            <!-- 1. CONVERTER -->
-            <section id="converter" class="panel hero-panel">
+            <!-- TIER 1: CONVERTER & TOP 3 TRENDS -->
+            <div class="dashboard-top-row">
+                <section id="converter" class="panel converter-panel">
+                    <div class="panel-header">
+                        <h2>Currency Converter</h2>
+                        <div id="rate-text" class="status-indicator">● Connecting...</div>
+                    </div>
+                    <div class="converter-ui">
+                        <div class="field">
+                            <label>Amount</label>
+                            <input type="number" id="amount" value="1.00">
+                        </div>
+                        <div class="selector-row">
+                            <select id="fromCurrency"></select>
+                            <button id="swapBtn">⇄</button>
+                            <select id="toCurrency"></select>
+                        </div>
+                        <button id="convertBtn" class="primary-btn">Calculate Conversion</button>
+                        <div class="result-area">
+                            <h2 id="converted-total">0.00</h2>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel trends-panel">
+                    <div class="panel-header">
+                        <h2>Top 3 Market Pairs</h2>
+                        <p class="desc-sm">24h Fluctuation Analysis</p>
+                    </div>
+                    <div class="top-3-container" id="top-3-body">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- TIER 2: DETAILED ANALYTICS -->
+            <section id="market-analytics" class="panel analytics-panel">
                 <div class="panel-header">
-                    <h1>Currency Converter</h1>
-                    <div id="rate-text" class="live-status"><span class="pulse"></span> Initialising Live Market...</div>
+                    <h2>Advanced Market Analytics</h2>
+                    <p class="section-desc">
+                        Our 2026 proprietary analysis engine combines **Technical Indicators** with real-time liquidity data. 
+                        By studying the volatility of the EUR, GBP, and AUD against the USD, traders can identify 
+                        cyclical patterns. For institutional fundamental news, we recommend deep-diving at 
+                        <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.
+                    </p>
                 </div>
-                <div class="converter-ui">
-                    <div class="field">
-                        <label>Amount</label>
-                        <input type="number" id="amount" value="1.00">
-                    </div>
-                    <div class="selector-row">
-                        <select id="fromCurrency"></select>
-                        <button id="swapBtn">⇄</button>
-                        <select id="toCurrency"></select>
-                    </div>
-                    <button id="convertBtn">Convert Now</button>
-                    <div class="result-display">
-                        <h2 id="converted-total">0.00</h2>
+                
+                <div class="analytics-grid">
+                    <!-- Interactive Chart -->
+                    <div class="chart-container">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://tradingview.com" async>
+                            { "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
+                              "tabs": [{ "title": "Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:AUDUSD"}]}] }
+                            </script>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. TOP 5 PAIRS TRENDS & ANALYSIS -->
-            <section id="market-data" class="panel">
-                <div class="panel-header">
-                    <h2>Top 5 Currency Pairs: 24h Analysis</h2>
-                    <p class="section-desc">Study 24-hour price fluctuations to predict market direction. For fundamental news, we recommend <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.</p>
-                </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Pair</th>
-                                <th>Rate</th>
-                                <th>24h Change</th>
-                                <th>Sentiment</th>
-                            </tr>
-                        </thead>
-                        <tbody id="trends-body">
-                            <!-- Data via JS -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- 3. INTERACTIVE ANALYTICS -->
-            <section class="panel chart-panel">
-                <h2>Interactive Market Analytics</h2>
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://tradingview.com" async>
-                    { "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
-                      "tabs": [{ "title": "Forex Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:USDJPY"},{"s": "FX:AUDUSD"},{"s": "FX:USDCAD"}]}] }
-                    </script>
-                </div>
-            </section>
-
-            <!-- 4. EDUCATION HUB -->
-            <section id="edu-hub" class="panel">
+            <!-- TIER 3: EDUCATION HUB -->
+            <section id="edu-hub" class="panel edu-panel">
                 <h2>Forex Education Hub</h2>
-                <p>Master the mechanics of global finance. Our resources simplify mid-market rates and risk management for every trader.</p>
                 <div class="link-grid">
-                    <a href="https://investopedia.com" target="_blank">1. Market Basics</a>
-                    <a href="privacy.html">2. Privacy & Data</a>
-                    <a href="#">3. Interest Rates</a>
-                    <a href="#">4. Best Trading Times</a>
-                    <a href="#">5. Risk Management</a>
-                    <a href="#">6. Central Bank Roles</a>
-                    <a href="#">7. Inflation Impact</a>
-                    <a href="#">8. Technical Analysis</a>
-                    <a href="#">9. Safe Haven Assets</a>
-                    <a href="#">10. Candle Charts</a>
+                    <a href="https://investopedia.com" target="_blank" class="edu-card">
+                        <h4>1. Market Fundamentals</h4>
+                        <p>The basics of the $7.5T market.</p>
+                    </a>
+                    <a href="privacy.html" class="edu-card">
+                        <h4>2. Privacy & Compliance</h4>
+                        <p>Our commitment to your data.</p>
+                    </a>
+                    <!-- Add other cards similarly -->
                 </div>
             </section>
         </main>
 
-        <!-- RIGHT AD SIDEBAR -->
+        <!-- AD SIDEBAR (RIGHT) -->
         <aside class="ad-sidebar">
-            <div class="ad-box skyscraper">
-                <span class="ad-tag">Advertisement</span>
-            </div>
+            <div class="ad-box skyscraper"><span class="ad-tag">AdSense Slot</span></div>
         </aside>
     </div>
 
     <footer>
-        <div class="container footer-content">
+        <div class="container">
             <p>&copy; 2026 SS Traders Education | <a href="privacy.html">Privacy Policy</a> | sstraders.education@gmail.com</p>
         </div>
     </footer>
