@@ -3,133 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currency Converter & Forex Hub | SS Traders Education</title>
-    <meta name="description" content="Expert currency conversion and forex education. Learn how to find the best exchange rates with live mid-market data.">
+    <title>Global FX Dashboard | SS Traders Education</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://er-api.com">
 </head>
 <body>
+    <header>
+        <nav class="container">
+            <div class="logo">SS Traders <span>Education</span></div>
+            <ul class="nav-links">
+                <li><a href="#converter">Converter</a></li>
+                <li><a href="#market-trends">Market Trends</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <nav class="container">
-        <div class="logo">SS Traders <span>Education</span></div>
-        <ul class="nav-links">
-            <li><a href="#converter">Converter</a></li>
-            <li><a href="#featured-article">Expert Guide</a></li>
-            <li><a href="#articles">Resources</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <main class="container">
+        <!-- TOP AD SLOT -->
+        <div class="ad-slot top-banner">
+            <span class="ad-label">Advertisement</span>
+            <!-- Place your AdSense code here -->
+        </div>
 
-<main>
-    <!-- CONVERTER TOOL -->
-    <section id="converter" class="hero">
-        <h1>Global Currency Converter</h1>
-        <div class="converter-card">
-            <div class="input-row">
-                <div class="field">
-                    <label>Amount</label>
-                    <input type="number" id="amount" value="1.00">
+        <div class="dashboard-grid">
+            <!-- CONVERTER SECTION -->
+            <section id="converter" class="converter-panel">
+                <div class="panel-header">
+                    <h1>Currency Converter</h1>
+                    <p id="live-status">● Live Market Connection</p>
                 </div>
-                <div class="field">
-                    <label>From</label>
-                    <select id="fromCurrency"></select>
+                <div class="converter-ui">
+                    <div class="input-group">
+                        <label>Amount</label>
+                        <input type="number" id="amount" value="1.00">
+                    </div>
+                    <div class="selector-row">
+                        <select id="fromCurrency"></select>
+                        <button id="swapBtn">⇅</button>
+                        <select id="toCurrency"></select>
+                    </div>
+                    <button id="convertBtn">Convert Now</button>
+                    <div class="result-area">
+                        <p id="rate-text">1 USD = 0.00 ---</p>
+                        <h2 id="converted-total">0.00</h2>
+                    </div>
                 </div>
-                <button id="swapBtn">⇄</button>
-                <div class="field">
-                    <label>To</label>
-                    <select id="toCurrency"></select>
-                </div>
-                <button id="convertBtn">Convert</button>
-            </div>
-            <div id="result-display">
-                <p id="rate-text">Initialising live market connection...</p>
-                <h2 id="converted-total">0.00</h2>
+            </section>
+
+            <!-- SIDEBAR AD SLOT -->
+            <div class="ad-slot sidebar-ad">
+                <span class="ad-label">Sponsored</span>
+                <!-- Place your AdSense code here -->
             </div>
         </div>
-    </section>
 
-    <!-- FULL FEATURED ARTICLE -->
-    <section id="featured-article" class="section container">
-        <article class="main-article">
-            <h2>How to Find the Best Money Exchange Centres: A Comprehensive Guide</h2>
-            <p>Finding the best money exchange centre requires moving beyond the "zero commission" marketing and understanding that the true cost of your currency is hidden in the exchange rate margin. To secure the most competitive deal, your first step should always be identifying the mid-market rate—the "real" value of the currency used by banks and seen on platforms like Google Finance or XE. Once you have this benchmark, you can easily spot how much a provider is skimming off the top. Location is the most significant factor in price variation. Specialist shops like Travel Money Oz, United Currency Exchange, or Crown Currency Exchange often outperform traditional banks, which have largely moved away from competitive cash exchange in favor of digital products.
-Timing and preparation are equally critical. Rates fluctuate throughout the day, so checking quotes simultaneously ensures a fair comparison. For those who prefer physical cash, online pre-ordering is a powerful tool. Many large providers, including Travelex, offer significantly better rates if you order via their website for an in-store pickup compared to their walk-up window rates. If you are exchanging a substantial amount—typically over $1,000—do not be afraid to negotiate. Independent tellers often have a small amount of "wiggle room" and may improve the rate to secure a large transaction. Safety and verification should never be overlooked in the pursuit of a bargain. Only deal with reputable providers regulated by authorities like AUSTRAC to ensure your currency is genuine and your transaction is legal. Always count your cash at the window before leaving and keep your receipt; this documentation is vital for your travel records and is often required if you want to use a "buy-back" guarantee for leftover funds later. By combining digital research with a strategic visit to city-centre specialists, you can ensure that more of your travel budget stays in your pocket rather than the exchange booth’s till.</p>
-        </article>
-    </section>
-
-    <!-- 20 EXTERNAL EDUCATIONAL ARTICLES -->
-    <section id="articles" class="section bg-light">
-        <div class="container">
-            <h2>Financial Education Hub</h2>
-            <div class="article-grid">
-                <div class="post">
-                    <h3><a href="https://www.investopedia.com/articles/forex/11/why-trade-forex.asp" target="_blank">1. Why Trade Forex?</a></h3>
-                    <p>Understanding the basics of the world's largest financial market.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.rba.gov.au/education/resources/explainers/exchange-rates-and-their-measurement.html" target="_blank">2. Measuring Exchange Rates</a></h3>
-                    <p>A guide to bilateral and cross-rates from the RBA.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.worldfirst.com/au/insight/business-banking-insights/mid-market-exchange-rate/" target="_blank">3. Mid-Market Rates Explained</a></h3>
-                    <p>Why the "real" exchange rate matters for your wallet.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.reuters.com/markets/currencies/" target="_blank">4. Live Currency News</a></h3>
-                    <p>Stay updated with breaking market headlines from Reuters.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.investopedia.com/financial-edge/0412/the-basics-of-currency-trading.aspx" target="_blank">5. Forex Basics for Beginners</a></h3>
-                    <p>Essential knowledge before risking real capital.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://bloomberg.com" target="_blank">6. Global Market Data</a></h3>
-                    <p>Real-time updates on global currency movements.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.ofx.com/en-au/forex-news/" target="_blank">7. FX Pairs to Watch</a></h3>
-                    <p>Analysis of major currency pairs and volatility.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.rba.gov.au/publications/bulletin/2018/dec/understanding-exchange-rates-and-why-they-are-important.html" target="_blank">8. Why Rates Fluctuate</a></h3>
-                    <p>The impact of inflation and interest rates on currency.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.airwallex.com/blog/understanding-the-mid-market-exchange-rate" target="_blank">9. The Fairness of Rates</a></h3>
-                    <p>Using mid-market rates as a standard for evaluation.</p>
-                </div>
-                <div class="post">
-                    <h3><a href="https://www.gomarkets.com/en-au/articles/which-fx-pairs-could-move-most-in-may-2026-and-why" target="_blank">10. 2026 Market Outlook</a></h3>
-                    <p>Anticipated shifts in major forex pairs.</p>
-                </div>
-                <!-- Adding more authoritative links to reach 20 -->
-                <div class="post"><h3><a href="https://cnbc.com" target="_blank">11. CNBC Currency Updates</a></h3></div>
-                <div class="post"><h3><a href="https://marketwatch.com" target="_blank">12. MarketWatch Analysis</a></h3></div>
-                <div class="post"><h3><a href="https://ft.com" target="_blank">13. Financial Times Forex</a></h3></div>
-                <div class="post"><h3><a href="https://economist.com" target="_blank">14. The Economist Finance</a></h3></div>
-                <div class="post"><h3><a href="https://xe.com" target="_blank">15. XE Currency Blog</a></h3></div>
-                <div class="post"><h3><a href="https://dailyfx.com" target="_blank">16. DailyFX Insights</a></h3></div>
-                <div class="post"><h3><a href="https://forexlive.com" target="_blank">17. ForexLive Analysis</a></h3></div>
-                <div class="post"><h3><a href="https://nasdaq.com" target="_blank">18. Nasdaq Forex Data</a></h3></div>
-                <div class="post"><h3><a href="https://yahoo.com" target="_blank">19. Yahoo Finance Hub</a></h3></div>
-                <div class="post"><h3><a href="https://tradingview.com" target="_blank">20. TradingView Charts</a></h3></div>
+        <!-- 24H MARKET PERFORMANCE TABLE -->
+        <section id="market-trends" class="trends-panel">
+            <h2>Market Trends (Last 24 Hours)</h2>
+            <div class="table-responsive">
+                <table id="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Currency Pair</th>
+                            <th>Current Rate</th>
+                            <th>24h Change</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trends-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- CONTACT & LEGAL -->
-    <footer id="contact">
-        <div class="container">
-            <p>Questions? Contact: <strong>sstraders.education@gmail.com</strong></p>
-            <div id="legal">
-                <p>SS Traders Education uses cookies to serve ads. Rates are for educational use only.</p>
-            </div>
-        </div>
+    <footer class="container">
+        <p>&copy; 2026 SS Traders Education. All rates informational only.</p>
     </footer>
-</main>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
