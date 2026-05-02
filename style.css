@@ -1,32 +1,59 @@
-:root {
-    --primary: #00d6b4; --accent: #003cc8; --dark: #0e132b;
-    --bg: #f3f5f9; --white: #ffffff; --text: #1e293b; 
-    --up: #10b981; --down: #ef4444; --border: #e2e8f0;
+/* Visual Hub Styling */
+.visual-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
-body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; color: var(--text); }
+.image-card {
+    display: block;
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    height: 120px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Layout: 3-Tier Dashboard */
-.dashboard-wrapper { display: grid; grid-template-columns: 200px 1fr 200px; gap: 24px; padding: 40px 0; }
-.dashboard-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.image-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
-/* Panels */
-.panel { background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-.panel-header h2 { font-size: 1.1rem; margin: 0 0 15px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
 
-/* Top 3 Trends Design */
-.trend-card { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-radius: 8px; background: #f8fafc; margin-bottom: 12px; }
-.trend-pair { font-weight: 800; font-family: 'JetBrains Mono', monospace; }
-.trend-val { font-size: 1.2rem; font-weight: 600; }
-.change-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800; }
+.image-card:hover .card-image {
+    transform: scale(1.1);
+}
 
-/* UI Refinement */
-input, select, .primary-btn { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); font-size: 1rem; }
-.primary-btn { background: var(--accent); color: white; font-weight: 800; cursor: pointer; transition: 0.2s; }
-.primary-btn:hover { background: var(--dark); transform: translateY(-1px); }
+.card-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(14, 19, 43, 0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    color: white;
+}
 
-/* Sticky Header Glassmorphism */
-.fintech-header { position: sticky; top: 0; z-index: 1000; background: rgba(14, 19, 43, 0.9); backdrop-filter: blur(10px); padding: 10px 0; color: white; }
-.nav-dock { display: flex; background: rgba(255,255,255,0.05); border-radius: 50px; padding: 3px; border: 1px solid rgba(255,255,255,0.1); }
-.nav-item { color: #94a3b8; text-decoration: none; padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 40px; }
-.nav-item.active { background: var(--primary); color: var(--dark); }
+.card-overlay .category {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.card-overlay h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0;
+}
