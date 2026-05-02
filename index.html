@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Platform | Professional FX Dashboard</title>
-    <meta name="description" content="Professional currency converter, market analysis, and forex fundamentals education.">
+    <title>SST Platform | Global FX Dashboard</title>
+    <meta name="description" content="Professional currency converter, market analytics, and visual forex education guides.">
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
@@ -23,7 +23,7 @@
                 <a href="#edu-hub" class="nav-item">Education</a>
             </nav>
             <div class="header-action">
-                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">Live Session</a>
+                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">
             </div>
         </div>
     </header>
@@ -37,12 +37,12 @@
         <!-- MAIN DASHBOARD -->
         <main class="content-column">
             
-            <!-- TIER 1: CONVERTER & TOP 3 TRENDS -->
             <div class="dashboard-top-row">
+                <!-- 1. CONVERTER PANEL -->
                 <section id="converter" class="panel converter-panel">
                     <div class="panel-header">
                         <h2>Currency Converter</h2>
-                        <div id="rate-text" class="status-indicator">● Connecting...</div>
+                        <div id="rate-text" class="status-indicator">● Initialising...</div>
                     </div>
                     <div class="converter-ui">
                         <div class="field">
@@ -55,29 +55,53 @@
                             <select id="toCurrency"></select>
                         </div>
                         <button id="convertBtn" class="primary-btn">Calculate Conversion</button>
-                        <div class="result-area">
+                        <div class="result-display">
                             <h2 id="converted-total">0.00</h2>
                         </div>
                     </div>
                 </section>
 
-                <section class="panel trends-panel">
+                <!-- 2. VISUAL HUB PANEL (REPLACED TOP 3 PAIRS) -->
+                <section class="panel visual-hub-panel">
                     <div class="panel-header">
-                        <h2>Top 3 Market Pairs</h2>
-                        <p class="desc-sm">24h Fluctuation Analysis</p>
+                        <h2>Expert Visual Guides</h2>
+                        <p class="desc-sm">Click to explore market mechanics</p>
                     </div>
-                    <div class="top-3-container" id="top-3-body">
-                        <!-- Populated by JS -->
+                    <div class="visual-grid">
+                        <a href="market-fundamentals.html" class="image-card">
+                            <div class="card-image" style="background-image: url('https://unsplash.com');">
+                                <div class="card-overlay">
+                                    <span class="category">Education</span>
+                                    <h3>Market Fundamentals</h3>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="risk-management.html" class="image-card">
+                            <div class="card-image" style="background-image: url('https://unsplash.com');">
+                                <div class="card-overlay">
+                                    <span class="category">Strategy</span>
+                                    <h3>Risk Management</h3>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="privacy.html" class="image-card">
+                            <div class="card-image" style="background-image: url('https://unsplash.com');">
+                                <div class="card-overlay">
+                                    <span class="category">Compliance</span>
+                                    <h3>Data Privacy</h3>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </section>
             </div>
 
-            <!-- TIER 2: DETAILED ANALYTICS -->
+            <!-- 3. ADVANCED ANALYTICS -->
             <section id="market-analytics" class="panel analytics-panel">
                 <div class="panel-header">
                     <h2>Advanced Market Analytics</h2>
                     <p class="section-desc">
-                        Our 2026 proprietary analysis engine combines **Technical Indicators** with real-time liquidity data. For institutional fundamental news, we recommend deep-diving at 
+                        Proprietary technical analysis for major G10 currency pairs. For breaking fundamental news, we recommend 
                         <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.
                     </p>
                 </div>
@@ -92,32 +116,28 @@
                 </div>
             </section>
 
-            <!-- TIER 3: EDUCATION HUB -->
+            <!-- 4. EDUCATION HUB -->
             <section id="edu-hub" class="panel edu-panel">
                 <div class="panel-header">
-                    <h2>Forex Education Hub</h2>
-                    <p class="section-desc">Explore our library of professional trading resources to master global markets.</p>
+                    <h2>Financial Education Hub</h2>
+                    <p class="section-desc">Master the mechanics of the $7.5T global marketplace.</p>
                 </div>
                 <div class="link-grid">
-                    <!-- LINKED TO INTERNAL PAGE -->
                     <a href="market-fundamentals.html" class="edu-card">
                         <h4>1. Market Fundamentals</h4>
-                        <p>A deep dive into the mechanics of the $7.5T global market.</p>
+                        <p>A deep dive into interbank mechanics.</p>
                     </a>
-                    
                     <a href="privacy.html" class="edu-card">
                         <h4>2. Privacy & Compliance</h4>
-                        <p>How we handle financial data and cookie transparency.</p>
+                        <p>Our transparency and cookie policy.</p>
                     </a>
-
-                    <a href="#" class="edu-card">
+                    <a href="risk-management.html" class="edu-card">
                         <h4>3. Risk Management</h4>
-                        <p>Strategies for protecting your capital in volatile markets.</p>
+                        <p>Strategies for capital protection.</p>
                     </a>
-
                     <a href="#" class="edu-card">
                         <h4>4. Central Bank Roles</h4>
-                        <p>Understanding how the Fed and RBA impact exchange rates.</p>
+                        <p>How the Fed and RBA impact rates.</p>
                     </a>
                 </div>
             </section>
@@ -136,5 +156,8 @@
     </footer>
 
     <script src="script.js"></script>
+</body>
+</html>
+
 </body>
 </html>
