@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SST Platform | Professional FX Dashboard</title>
+    <meta name="description" content="Professional currency converter, market analysis, and forex fundamentals education.">
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
@@ -76,44 +77,48 @@
                 <div class="panel-header">
                     <h2>Advanced Market Analytics</h2>
                     <p class="section-desc">
-                        Our 2026 proprietary analysis engine combines **Technical Indicators** with real-time liquidity data. 
-                        By studying the volatility of the EUR, GBP, and AUD against the USD, traders can identify 
-                        cyclical patterns. For institutional fundamental news, we recommend deep-diving at 
+                        Our 2026 proprietary analysis engine combines **Technical Indicators** with real-time liquidity data. For institutional fundamental news, we recommend deep-diving at 
                         <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.
                     </p>
                 </div>
-                
-                <div class="analytics-grid">
-                    <!-- Interactive Chart -->
-                    <div class="chart-container">
-                        <div class="tradingview-widget-container">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <script type="text/javascript" src="https://tradingview.com" async>
-                            { "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
-                              "tabs": [{ "title": "Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:AUDUSD"}]}] }
-                            </script>
-                        </div>
+                <div class="chart-container">
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://tradingview.com" async>
+                        { "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
+                          "tabs": [{ "title": "Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:AUDUSD"}]}] }
+                        </script>
                     </div>
                 </div>
             </section>
 
-            <!-- TIER 3: EDUCATION HUB --><a href="https://investopedia.com" target="_blank" class="edu-card">
-    <h4>1. Market Fundamentals</h4>
-    <p>The basics of the $7.5T market.</p>
-</a>
-
+            <!-- TIER 3: EDUCATION HUB -->
             <section id="edu-hub" class="panel edu-panel">
-                <h2>Forex Education Hub</h2>
+                <div class="panel-header">
+                    <h2>Forex Education Hub</h2>
+                    <p class="section-desc">Explore our library of professional trading resources to master global markets.</p>
+                </div>
                 <div class="link-grid">
-                    <a href="https://investopedia.com" target="_blank" class="edu-card">
+                    <!-- LINKED TO INTERNAL PAGE -->
+                    <a href="market-fundamentals.html" class="edu-card">
                         <h4>1. Market Fundamentals</h4>
-                        <p>The basics of the $7.5T market.</p>
+                        <p>A deep dive into the mechanics of the $7.5T global market.</p>
                     </a>
+                    
                     <a href="privacy.html" class="edu-card">
                         <h4>2. Privacy & Compliance</h4>
-                        <p>Our commitment to your data.</p>
+                        <p>How we handle financial data and cookie transparency.</p>
                     </a>
-                    <!-- Add other cards similarly -->
+
+                    <a href="#" class="edu-card">
+                        <h4>3. Risk Management</h4>
+                        <p>Strategies for protecting your capital in volatile markets.</p>
+                    </a>
+
+                    <a href="#" class="edu-card">
+                        <h4>4. Central Bank Roles</h4>
+                        <p>Understanding how the Fed and RBA impact exchange rates.</p>
+                    </a>
                 </div>
             </section>
         </main>
@@ -125,7 +130,7 @@
     </div>
 
     <footer>
-        <div class="container">
+        <div class="container footer-content">
             <p>&copy; 2026 SS Traders Education | <a href="privacy.html">Privacy Policy</a> | sstraders.education@gmail.com</p>
         </div>
     </footer>
