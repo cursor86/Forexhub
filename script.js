@@ -1,62 +1,62 @@
 /**
- * Optimized High-Speed Logic for SS Traders Education
- * Features: Parallel Fetching & 3-Second Fail-Safe
+ * SS Traders Education - Permanent Live Rate Fix
+ * Uses Dual-Proxy Strategy to bypass CORS & Network Shields
  */
 
 const API_URL = "https://frankfurter.app";
+const PROXIES = [
+    "https://allorigins.win",
+    "https://corsproxy.io?"
+];
 
-// Built-in rates for instant fallback if the network is slow
-const fallbackRates = { "USD": 1, "AUD": 1.54, "EUR": 0.92, "GBP": 0.81, "INR": 83.5, "CAD": 1.37, "JPY": 156.2 };
-
-async function init() {
+async function init(proxyIndex = 0) {
     const rateText = document.getElementById('rate-text');
     const fromSelect = document.getElementById('fromCurrency');
     const toSelect = document.getElementById('toCurrency');
 
-    // Start fetching live data
-    const fetchPromise = fetch(API_URL).then(res => res.json());
-
-    // Create a 'timeout' promise that triggers after 3 seconds
-    const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error("Timeout")), 3000)
-    );
+    if (proxyIndex >= PROXIES.length) {
+        rateText.innerText = "Connection Blocked. Please disable Ad-blockers.";
+        return;
+    }
 
     try {
-        // Race the API against the clock
-        const data = await Promise.race([fetchPromise, timeoutPromise]);
-        setupConverter(data.rates, "Live Market Connected");
+        console.log(`Connecting via Proxy ${proxyIndex + 1}...`);
+        const response = await fetch(PROXIES[proxyIndex] + encodeURIComponent(API_URL));
+        
+        if (!response.ok) throw new Error();
+        
+        const data = await response.json();
+        setupConverter(data.rates);
+        rateText.innerText = "Live Market Status: Connected (Verified)";
+
     } catch (error) {
-        console.warn("API slow or blocked. Using high-speed fallback.");
-        setupConverter(fallbackRates, "High-Speed Mode Active");
+        console.warn(`Proxy ${proxyIndex + 1} failed. Retrying...`);
+        init(proxyIndex + 1); // Try the next proxy
     }
 }
 
-function setupConverter(rates, status) {
+function setupConverter(rates) {
     const fromSelect = document.getElementById('fromCurrency');
     const toSelect = document.getElementById('toCurrency');
     const codes = Object.keys(rates);
     if (!codes.includes('EUR')) codes.push('EUR');
     codes.sort();
 
-    // Fill dropdowns
+    // Fill Dropdowns
     fromSelect.innerHTML = ""; toSelect.innerHTML = "";
     codes.forEach(code => {
         fromSelect.add(new Option(code, code));
         toSelect.add(new Option(code, code));
     });
 
-    // Set defaults
     fromSelect.value = "USD";
     toSelect.value = "AUD";
-    document.getElementById('rate-text').innerText = status;
 
-    // Attach Click Event
     document.getElementById('convertBtn').onclick = () => {
         const amount = document.getElementById('amount').value || 1;
         const from = fromSelect.value;
         const to = toSelect.value;
         
-        // Calculation
         const fromRate = (from === 'EUR') ? 1 : rates[from];
         const toRate = (to === 'EUR') ? 1 : rates[to];
         const result = (amount / fromRate) * toRate;
@@ -66,7 +66,5 @@ function setupConverter(rates, status) {
     };
 }
 
-window.onload = init;
-
-window.onload = () => getLiveRates();
+window.onload = () => init();
 
