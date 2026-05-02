@@ -1,70 +1,82 @@
 /**
- * SS Traders Education - Final "CORS-Proof" Logic
- * Method: JSONP (Bypasses browser security blocks)
+ * SS Traders Education - Permanent Live Rate Solution
+ * Bypasses CORS and Network Shields via Dynamic Proxying
  */
 
-// 1. The Callback: This runs as soon as the data arrives
-window.handleRates = function(data) {
+// 1. Reliable Proxies & API
+const PROXY_LIST = [
+    "https://allorigins.win",
+    "https://corsproxy.io/?"
+];
+const API_URL = "https://frankfurter.app";
+
+async function getLiveRates(proxyIndex = 0) {
+    const rateText = document.getElementById('rate-text');
+    
+    if (proxyIndex >= PROXY_LIST.length) {
+        throw new Error("All proxies failed");
+    }
+
+    try {
+        const targetUrl = PROXY_LIST[proxyIndex] + encodeURIComponent(API_URL);
+        console.log(`Connecting to Live Market via Proxy ${proxyIndex + 1}...`);
+        
+        const response = await fetch(targetUrl);
+        if (!response.ok) throw new Error();
+        
+        const data = await response.json();
+        setupConverter(data.rates);
+        rateText.innerText = "Live Market Status: Connected (Verified)";
+        
+    } catch (err) {
+        console.warn(`Proxy ${proxyIndex + 1} blocked. Retrying...`);
+        // Recursive retry with next proxy
+        return getLiveRates(proxyIndex + 1);
+    }
+}
+
+function setupConverter(rates) {
     const fromSelect = document.getElementById('fromCurrency');
     const toSelect = document.getElementById('toCurrency');
-    const rateText = document.getElementById('rate-text');
     const convertBtn = document.getElementById('convertBtn');
     const resultDisplay = document.getElementById('converted-total');
 
-    if (data && data.rates) {
-        const rates = data.rates;
-        const codes = Object.keys(rates);
-        codes.push('USD'); // Ensure base is included
-        codes.sort();
+    const codes = Object.keys(rates);
+    if (!codes.includes('EUR')) codes.push('EUR');
+    codes.sort();
 
-        // Populate Dropdowns
-        fromSelect.innerHTML = "";
-        toSelect.innerHTML = "";
-        codes.forEach(code => {
-            fromSelect.add(new Option(code, code));
-            toSelect.add(new Option(code, code));
-        });
+    // Fill dropdowns once with real data
+    fromSelect.innerHTML = "";
+    toSelect.innerHTML = "";
+    codes.forEach(code => {
+        fromSelect.add(new Option(code, code));
+        toSelect.add(new Option(code, code));
+    });
 
-        fromSelect.value = "USD";
-        toSelect.value = "AUD";
-        rateText.innerText = "Live Market Status: Connected (Secure)";
+    fromSelect.value = "USD";
+    toSelect.value = "AUD";
 
-        // Conversion Logic
-        convertBtn.onclick = () => {
-            const amt = parseFloat(document.getElementById('amount').value) || 1;
-            const from = fromSelect.value;
-            const to = toSelect.value;
+    convertBtn.onclick = () => {
+        const amount = parseFloat(document.getElementById('amount').value) || 1;
+        const from = fromSelect.value;
+        const to = toSelect.value;
 
-            // Calculate via USD base: (Amount / RateOfFrom) * RateOfTo
-            const fromRate = (from === 'USD') ? 1 : rates[from];
-            const toRate = (to === 'USD') ? 1 : rates[to];
-            const finalValue = (amt / fromRate) * toRate;
+        // Math: (Amount / BaseRateFrom) * BaseRateTo
+        const baseFrom = (from === 'EUR') ? 1 : rates[from];
+        const baseTo = (to === 'EUR') ? 1 : rates[to];
+        const finalValue = (amount / baseFrom) * baseTo;
 
-            resultDisplay.innerText = finalValue.toLocaleString(undefined, {
-                minimumFractionDigits: 2, 
-                maximumFractionDigits: 2
-            }) + " " + to;
+        resultDisplay.innerText = finalValue.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }) + " " + to;
 
-            rateText.innerText = `1 ${from} = ${(toRate / fromRate).toFixed(4)} ${to}`;
-        };
-
-        // Initial Calculation
-        convertBtn.click();
-    }
-};
-
-// 2. The Trigger: Loads the API as a Script to bypass CORS
-function connectToLiveMarket() {
-    const script = document.createElement('script');
-    // Using Open-ER-API which supports the ?callback= parameter
-    script.src = "https://er-api.com";
-    
-    script.onerror = () => {
-        document.getElementById('rate-text').innerText = "Network Shield Active. Please disable Ad-blockers.";
+        document.getElementById('rate-text').innerText = `1 ${from} = ${(finalValue / amount).toFixed(4)} ${to}`;
     };
-    
-    document.body.appendChild(script);
+
+    convertBtn.click();
 }
 
-// Start the process
-window.onload = connectToLiveMarket;
+// Start the app
+window.onload = () => getLiveRates();
+
