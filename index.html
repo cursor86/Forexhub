@@ -3,173 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Platform | Global FX Dashboard</title>
-    <meta name="description" content="Professional currency converter, market analytics, and visual forex education guides.">
+    <title>SST Platform | Pro FX Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for that premium FinTech look -->
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
-<body>
+<body class="fintech-theme">
 
-    <!-- Professional Glass Header -->
+    <!-- Premium Sticky Header -->
     <header class="fintech-header">
         <div class="container header-flex">
-            <div class="logo">
-                <span class="logo-icon">SST</span>
-                <div class="logo-text">Traders <span>Education</span></div>
-            </div>
+            <div class="logo">SST <span>Education</span></div>
             <nav class="nav-dock">
                 <a href="#converter" class="nav-item active">Converter</a>
-                <a href="#market-analytics" class="nav-item">Analytics</a>
+                <a href="#market-data" class="nav-item">Analytics</a>
                 <a href="#edu-hub" class="nav-item">Education</a>
             </nav>
-            <div class="header-action">
-                <a href="mailto:sstraders.education@gmail.com" class="btn-cta">Live Session</a>
-            </div>
+            <a href="contact.html" class="btn-cta">Live Session</a>
         </div>
     </header>
 
-    <div class="dashboard-wrapper container">
-        <!-- AD SIDEBAR (LEFT) -->
-        <aside class="ad-sidebar">
-            <div class="ad-box skyscraper"><span class="ad-tag">AdSense Slot</span></div>
-        </aside>
-
-        <!-- MAIN DASHBOARD -->
-        <main class="content-column">
-            
-            <div class="dashboard-top-row">
-                <!-- 1. CONVERTER PANEL -->
-                <section id="converter" class="panel converter-panel">
-                    <div class="panel-header">
-                        <h2>Currency Converter</h2>
-                        <div id="rate-text" class="status-indicator">● Initialising Market Data...</div>
-                    </div>
-                    <div class="converter-ui">
-                        <div class="field">
-                            <label>Amount</label>
-                            <input type="number" id="amount" value="1.00">
-                        </div>
-                        <div class="selector-row">
-                            <select id="fromCurrency"></select>
-                            <button id="swapBtn">⇄</button>
-                            <select id="toCurrency"></select>
-                        </div>
-                        <button id="convertBtn" class="primary-btn">Calculate Conversion</button>
-                        <div class="result-display">
-                            <h2 id="converted-total">0.00</h2>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 2. VISUAL HUB PANEL -->
-                <section class="panel visual-hub-panel">
-                    <div class="panel-header">
-                        <h2>Expert Visual Guides</h2>
-                        <p class="desc-sm">Click to explore market mechanics</p>
-                    </div>
-                    <div class="visual-grid">
-                        <a href="market-fundamentals.html" class="image-card">
-                            <div class="card-image" style="background-image: url('https://unsplash.com');">
-                                <div class="card-overlay">
-                                    <span class="category">Fundamentals</span>
-                                    <h3>Market Mechanics</h3>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="capital-protection.html" class="image-card">
-                            <div class="card-image" style="background-image: url('https://unsplash.com');">
-                                <div class="card-overlay">
-                                    <span class="category">Protection</span>
-                                    <h3>Capital Safety</h3>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="central-banks.html" class="image-card">
-                            <div class="card-image" style="background-image: url('https://unsplash.com');">
-                                <div class="card-overlay">
-                                    <span class="category">Policy</span>
-                                    <h3>Fed vs RBA</h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </section>
+    <main class="dashboard-container container">
+        
+        <!-- SECTION 1: CONVERTER -->
+        <section id="converter" class="glass-card">
+            <div class="card-header">
+                <h2>Real-Time Currency Converter</h2>
+                <div id="rate-text" class="status-label">● Initialising Market Feed...</div>
             </div>
-
-            <!-- 3. TOP 5 PAIRS TRENDS & ANALYSIS -->
-            <section id="market-trends" class="panel">
-                <div class="panel-header">
-                 
-                    <p class="section-desc">Study price action and market sentiment. For real-time fundamental news, we recommend <a href="https://forexlive.com" target="_blank" class="text-link">ForexLive</a>.</p>
+            <div class="converter-grid">
+                <div class="input-group">
+                    <label>Amount</label>
+                    <input type="number" id="amount" value="1.00">
                 </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Pair</th>
-                                <th>Live Rate</th>
-                                <th>24h Change</th>
-                                <th>Sentiment</th>
-                            </tr>
-                        </thead>
-                        <tbody id="trends-body">
-                            <!-- Populated via JS -->
-                        </tbody>
-                    </table>
+                <div class="select-row">
+                    <select id="fromCurrency"></select>
+                    <button id="swapBtn">⇄</button>
+                    <select id="toCurrency"></select>
                 </div>
-            </section>
+                <button id="convertBtn" class="primary-btn">Calculate Conversion</button>
+                <div class="result-box">
+                    <h2 id="converted-total" class="neon-text">0.00</h2>
+                </div>
+            </div>
+        </section>
 
-            <!-- 4. ADVANCED ANALYTICS CHART -->
-            <section id="market-analytics" class="panel analytics-panel">
-                <h2>Interactive Market Analytics</h2>
-                <div class="chart-container">
-                    <div class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <script type="text/javascript" src="https://tradingview.com" async>
-                        { "colorTheme": "light", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
-                          "tabs": [{ "title": "Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:AUDUSD"}]}] }
-                        </script>
+        <!-- SECTION 2: LIVE TRENDS (FIXED TABLE) -->
+        <section id="market-data" class="glass-card">
+            <div class="card-header">
+                <h2>Top 5 Currency Pairs: 24h Analysis</h2>
+                <p class="desc">Real-time sentiment data from <a href="https://forexlive.com" target="_blank">ForexLive</a></p>
+            </div>
+            <div class="table-container">
+                <table class="fintech-table">
+                    <thead>
+                        <tr>
+                            <th>Currency Pair</th>
+                            <th>Live Rate</th>
+                            <th>24h Change</th>
+                            <th>Sentiment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trends-body">
+                        <!-- Data Injected by script.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 3: INTERACTIVE CHARTS -->
+        <section class="glass-card chart-panel">
+            <h2>Market Analytics Dashboard</h2>
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://tradingview.com" async>
+                {
+                  "colorTheme": "dark", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
+                  "tabs": [{"title": "Forex Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:USDJPY"},{"s": "FX:AUDUSD"}]}]
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- SECTION 4: VISUAL EDUCATION HUB -->
+        <section id="edu-hub" class="glass-card">
+            <h2>Financial Education Hub</h2>
+            <div class="visual-grid">
+                <a href="market-fundamentals.html" class="image-card">
+                    <div class="card-img" style="background-image: url('https://unsplash.com');">
+                        <div class="overlay"><h3>Market Fundamentals</h3></div>
                     </div>
-                </div>
-            </section>
+                </a>
+                <a href="risk-management.html" class="image-card">
+                    <div class="card-img" style="background-image: url('https://unsplash.com');">
+                        <div class="overlay"><h3>Risk Management</h3></div>
+                    </div>
+                </a>
+                <a href="central-banks.html" class="image-card">
+                    <div class="card-img" style="background-image: url('https://unsplash.com');">
+                        <div class="overlay"><h3>Central Bank Policy</h3></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
 
-            <!-- 5. EDUCATION HUB -->
-            <section id="edu-hub" class="panel edu-panel">
-                <div class="panel-header">
-                    <h2>Financial Education Hub</h2>
-                    <p class="section-desc">Professional trading resources for global market literacy.</p>
-                </div>
-                <div class="link-grid">
-                    <a href="market-fundamentals.html" class="edu-card">
-                        <h4>1. Market Fundamentals</h4>
-                        <p>The mechanics of the $7.5T global marketplace.</p>
-                    </a>
-                    <a href="capital-protection.html" class="edu-card">
-                        <h4>2. Capital Protection</h4>
-                        <p>Risk management strategies to preserve wealth.</p>
-                    </a>
-                    <a href="central-banks.html" class="edu-card">
-                        <h4>3. Central Bank Roles</h4>
-                        <p>Understanding how the Fed and RBA impact rates.</p>
-                    </a>
-                    <a href="privacy.html" class="edu-card">
-                        <h4>4. Data & Compliance</h4>
-                        <p>Our commitment to privacy and transparency.</p>
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <!-- AD SIDEBAR (RIGHT) -->
-        <aside class="ad-sidebar">
-            <div class="ad-box skyscraper"><span class="ad-tag">AdSense Slot</span></div>
-        </aside>
-    </div>
-
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 SS Traders Education | <a href="privacy.html">Privacy Policy</a> | sstraders.education@gmail.com</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2026 SS Traders Education | <a href="privacy.html">Privacy Policy</a> | <a href="about.html">About Us</a></p>
     </footer>
 
     <script src="script.js"></script>
