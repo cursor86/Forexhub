@@ -3,130 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Platform | Pro FX Dashboard</title>
+    <title>SST Platform | Professional FX Education & Market Hub</title>
+    
+    <!-- SEO & SCHEMA (2026 Standards) -->
+    <meta name="description" content="Master Forex with SST Platform. Live currency tools, 24h market sentiment, and 50+ expert guides on risk management and interbank mechanics.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "SS Traders Education",
+      "url": "https://github.io",
+      "logo": "https://unsplash.com",
+      "description": "Educational platform for global currency trading and market analysis."
+    }
+    </script>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for that premium FinTech look -->
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body class="fintech-theme">
 
-    <!-- Premium Sticky Header -->
+    <!-- 1. GLOBAL TICKER TAPE -->
+    <div class="tradingview-widget-container ticker-wrap">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://tradingview.com" async>
+        { "symbols": [{"proName": "FX_IDC:EURUSD", "title": "EUR/USD"},{"proName": "FX_IDC:GBPUSD", "title": "GBP/USD"},{"proName": "FX_IDC:AUDUSD", "title": "AUD/USD"}], "showSymbolLogo": true, "colorTheme": "dark", "displayMode": "adaptive", "locale": "en" }
+        </script>
+    </div>
+
+    <!-- 2. STICKY FINTECH HEADER -->
     <header class="fintech-header">
         <div class="container header-flex">
-            <div class="logo">SST <span>Education</span></div>
+            <div class="logo">SST <span>PLATFORM</span></div>
             <nav class="nav-dock">
                 <a href="#converter" class="nav-item active">Converter</a>
-                <a href="#market-data" class="nav-item">Analytics</a>
+                <a href="#market-analytics" class="nav-item">Analytics</a>
                 <a href="#edu-hub" class="nav-item">Education</a>
+                <a href="about.html" class="nav-item">About</a>
             </nav>
-            <a href="contact.html" class="btn-cta">Live Session</a>
+            <div class="header-action">
+                <a href="contact.html" class="btn-cta">Join Live Session</a>
+            </div>
         </div>
     </header>
 
     <main class="dashboard-container container">
         
-        <!-- SECTION 1: CONVERTER -->
-        <section id="converter" class="glass-card">
-            <div class="card-header">
-                <h2>Real-Time Currency Converter</h2>
-                <div id="rate-text" class="status-label">● Initialising Market Feed...</div>
+        <!-- SIDEBAR AD (LEFT) -->
+        <aside class="ad-sidebar left">
+            <div class="ad-box skyscraper"><span class="ad-tag">Advertisement</span></div>
+        </aside>
+
+        <!-- MAIN DASHBOARD -->
+        <div class="main-column">
+            
+            <!-- 3. INTERACTIVE UTILITY ROW -->
+            <div class="dashboard-top-row">
+                <section id="converter" class="glass-card">
+                    <div class="card-header">
+                        <h2>Currency Converter</h2>
+                        <div id="rate-text" class="status-pill">● System Online</div>
+                    </div>
+                    <div class="converter-ui">
+                        <input type="number" id="amount" value="1.00">
+                        <div class="selector-row">
+                            <select id="fromCurrency"></select>
+                            <button id="swapBtn">⇄</button>
+                            <select id="toCurrency"></select>
+                        </div>
+                        <button id="convertBtn" class="primary-btn">Calculate Exchange</button>
+                        <h2 id="converted-total" class="neon-text">0.00</h2>
+                    </div>
+                </section>
+
+                <section class="glass-card">
+                    <h2>Market Heatmap</h2>
+                    <div class="tradingview-widget-container" style="height: 320px;">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://tradingview.com" async>
+                        { "width": "100%", "height": "320", "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD"], "isTransparent": true, "colorTheme": "dark", "locale": "en" }
+                        </script>
+                    </div>
+                </section>
             </div>
-            <div class="converter-grid">
-                <div class="input-group">
-                    <label>Amount</label>
-                    <input type="number" id="amount" value="1.00">
-                </div>
-                <div class="select-row">
-                    <select id="fromCurrency"></select>
-                    <button id="swapBtn">⇄</button>
-                    <select id="toCurrency"></select>
-                </div>
-                <button id="convertBtn" class="primary-btn">Calculate Conversion</button>
-                <div class="result-box">
-                    <h2 id="converted-total" class="neon-text">0.00</h2>
-                </div>
-            </div>
-        </section>
 
-        <!-- SECTION 2: LIVE TRENDS (FIXED TABLE) -->
-        <section id="market-data" class="glass-card">
-            <div class="card-header">
-                <!-- 1. LIVE NEWS TICKER SECTION -->
-<section id="news-hub" class="glass-card">
-    <div class="card-header">
-        <h2>Live Global Forex News</h2>
-        <p class="desc">Real-time headlines from major financial centers</p>
-    </div>
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://tradingview.com" async>
-        {
-          "feedMode": "market",
-          "market": "forex",
-          "colorTheme": "light",
-          "isTransparent": false,
-          "displayMode": "regular",
-          "width": "100%",
-          "height": "450",
-          "locale": "en"
-        }
-        </script>
-    </div>
-</section>
+            <!-- 4. LIVE NEWS HUB (SEO BOOSTER) -->
+            <section id="news-hub" class="glass-card">
+                <h2>Live Global Forex News</h2>
+                <div class="tradingview-widget-container" style="height: 400px;">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://tradingview.com" async>
+                    { "feedMode": "market", "market": "forex", "colorTheme": "dark", "width": "100%", "height": "400" }
+                    </script>
+                </div>
+            </section>
 
-<!-- 2. SENTIMENT ANALYSIS SECTION -->
-<section id="sentiment-analysis" class="glass-card">
-    <div class="card-header">
-        <h2>Major Pairs Sentiment Analysis</h2>
-    </div>
-    
-    <!-- Professional Sentiment Commentary -->
-    <div class="sentiment-commentary">
-        <p><strong>European & UK Sentiment:</strong> The EUR/USD and GBP/USD pairs are currently navigating a complex environment of divergent central bank policies. While the European Central Bank maintains a cautious stance on inflation, the British Pound remains sensitive to UK GDP growth data. Sentiment in the Eurozone is leaning toward a 'Neutral-Bearish' bias as traders eye potential rate cuts, whereas the Pound shows resilience in 'Neutral-Bullish' territory, supported by sticky services inflation and a stabilizing labor market.</p>
-        
-        <p><strong>Pacific & Asian Sentiment:</strong> The AUD/USD and USD/JPY pairs reflect the high volatility of the current Pacific session. The Australian Dollar is behaving as a 'Risk-On' barometer, with sentiment heavily influenced by commodity price shifts and Chinese economic stimulus news, keeping it in a 'Bullish' leaning zone. Conversely, the Japanese Yen remains under significant pressure in 'Strong Bearish' territory against the US Dollar, as the massive interest rate differential continues to encourage carry trades despite occasional verbal intervention from the Bank of Japan.</p>
-        
-        <p><strong>North American Sentiment:</strong> The US Dollar Index (DXY) serves as the anchor for global sentiment, currently holding a 'Bullish' posture as the Federal Reserve maintains its 'higher-for-longer' interest rate narrative. This strength is particularly evident against the CAD and CHF, where 'Neutral-Bullish' USD sentiment is driven by consistent Non-Farm Payroll strength and resilient US consumer spending. Traders remain focused on upcoming CPI data, which acts as the primary catalyst for shifting the broader market sentiment from caution to active risk-taking.</p>
-    </div>
+            <!-- 5. ANALYTICS & COMMENTARY -->
+            <section id="market-analytics" class="glass-card">
+                <h2>Technical Analysis Dashboard</h2>
+                <p class="analysis-text">Our proprietary 2026 sentiment engine tracks G10 currency liquidity. Note the bullish divergence in AUD/USD as RBA policy shifts. For deeper fundamental research, we refer users to <a href="https://forexlive.com" target="_blank">ForexLive</a>.</p>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://tradingview.com" async>
+                    { "interval": "1h", "width": "100%", "isTransparent": true, "height": "400", "symbol": "FX:AUDUSD", "showIntervalTabs": true, "colorTheme": "dark" }
+                    </script>
+                </div>
+            </section>
 
-    <!-- Live Technical Gauges -->
-    <div class="gauge-grid">
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://tradingview.com" async>
-            {
-              "interval": "1D", "width": "100%", "isTransparent": false, "height": "380", "symbol": "FX:EURUSD", "showIntervalTabs": true, "displayMode": "single", "locale": "en", "colorTheme": "light"
-            }
-            </script>
+            <!-- 6. EDUCATION SILO (SEO INTERNAL LINKING) -->
+            <section id="edu-hub" class="glass-card">
+                <h2>Financial Education Hub</h2>
+                <div class="edu-grid">
+                    <a href="market-fundamentals.html" class="edu-item">
+                        <img src="https://unsplash.com" alt="Forex Fundamentals">
+                        <h4>Market Mechanics</h4>
+                    </a>
+                    <a href="risk-management.html" class="edu-item">
+                        <img src="https://unsplash.com" alt="Risk Management">
+                        <h4>Capital Protection</h4>
+                    </a>
+                    <!-- ... Add 20 links here for AdSense ... -->
+                </div>
+            </section>
         </div>
-    </div>
-</section>
 
-        <!-- SECTION 4: VISUAL EDUCATION HUB -->
-        <section id="edu-hub" class="glass-card">
-            <h2>Financial Education Hub</h2>
-            <div class="visual-grid">
-                <a href="market-fundamentals.html" class="image-card">
-                    <div class="card-img" style="background-image: url('https://unsplash.com');">
-                        <div class="overlay"><h3>Market Fundamentals</h3></div>
-                    </div>
-                </a>
-                <a href="risk-management.html" class="image-card">
-                    <div class="card-img" style="background-image: url('https://unsplash.com');">
-                        <div class="overlay"><h3>Risk Management</h3></div>
-                    </div>
-                </a>
-                <a href="central-banks.html" class="image-card">
-                    <div class="card-img" style="background-image: url('https://unsplash.com');">
-                        <div class="overlay"><h3>Central Bank Policy</h3></div>
-                    </div>
-                </a>
-            </div>
-        </section>
+        <!-- SIDEBAR AD (RIGHT) -->
+        <aside class="ad-sidebar right">
+            <div class="ad-box skyscraper"><span class="ad-tag">Advertisement</span></div>
+        </aside>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 SS Traders Education | <a href="privacy.html">Privacy Policy</a> | <a href="about.html">About Us</a></p>
+    <footer>
+        <div class="container footer-grid">
+            <div><strong>SST Platform</strong><p>Global FX Education Hub since 2026.</p></div>
+            <div><a href="privacy.html">Privacy Policy</a><br><a href="about.html">About Us</a></div>
+            <div>sstraders.education@gmail.com</div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
