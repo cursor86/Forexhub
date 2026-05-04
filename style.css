@@ -31,3 +31,30 @@ nav a { color: #cbd5e1; text-decoration: none; margin-left: 20px; font-weight: 6
 .bullish { background: #dcfce7; color: #166534; }
 .bearish { background: #fee2e2; color: #991b1b; }
 items: flex-end; padding: 20px; }
+.sentiment-commentary {
+    padding: 20px 0;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 25px;
+}
+
+.sentiment-commentary p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 4px solid var(--primary); /* Teal accent line */
+}
+
+.gauge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
