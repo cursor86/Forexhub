@@ -51,39 +51,56 @@
         <!-- SECTION 2: LIVE TRENDS (FIXED TABLE) -->
         <section id="market-data" class="glass-card">
             <div class="card-header">
-                <h2>Top 5 Currency Pairs: 24h Analysis</h2>
-                <p class="desc">Real-time sentiment data from <a href="https://forexlive.com" target="_blank">ForexLive</a></p>
-            </div>
-            <div class="table-container">
-                <table class="fintech-table">
-                    <thead>
-                        <tr>
-                            <th>Currency Pair</th>
-                            <th>Live Rate</th>
-                            <th>24h Change</th>
-                            <th>Sentiment</th>
-                        </tr>
-                    </thead>
-                    <tbody id="trends-body">
-                        <!-- Data Injected by script.js -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
+                <!-- 1. LIVE NEWS TICKER SECTION -->
+<section id="news-hub" class="glass-card">
+    <div class="card-header">
+        <h2>Live Global Forex News</h2>
+        <p class="desc">Real-time headlines from major financial centers</p>
+    </div>
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://tradingview.com" async>
+        {
+          "feedMode": "market",
+          "market": "forex",
+          "colorTheme": "light",
+          "isTransparent": false,
+          "displayMode": "regular",
+          "width": "100%",
+          "height": "450",
+          "locale": "en"
+        }
+        </script>
+    </div>
+</section>
 
-        <!-- SECTION 3: INTERACTIVE CHARTS -->
-        <section class="glass-card chart-panel">
-            <h2>Market Analytics Dashboard</h2>
-            <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://tradingview.com" async>
-                {
-                  "colorTheme": "dark", "dateRange": "1D", "showChart": true, "locale": "en", "width": "100%", "height": "400",
-                  "tabs": [{"title": "Forex Majors", "symbols": [{"s": "FX:EURUSD"},{"s": "FX:GBPUSD"},{"s": "FX:USDJPY"},{"s": "FX:AUDUSD"}]}]
-                }
-                </script>
-            </div>
-        </section>
+<!-- 2. SENTIMENT ANALYSIS SECTION -->
+<section id="sentiment-analysis" class="glass-card">
+    <div class="card-header">
+        <h2>Major Pairs Sentiment Analysis</h2>
+    </div>
+    
+    <!-- Professional Sentiment Commentary -->
+    <div class="sentiment-commentary">
+        <p><strong>European & UK Sentiment:</strong> The EUR/USD and GBP/USD pairs are currently navigating a complex environment of divergent central bank policies. While the European Central Bank maintains a cautious stance on inflation, the British Pound remains sensitive to UK GDP growth data. Sentiment in the Eurozone is leaning toward a 'Neutral-Bearish' bias as traders eye potential rate cuts, whereas the Pound shows resilience in 'Neutral-Bullish' territory, supported by sticky services inflation and a stabilizing labor market.</p>
+        
+        <p><strong>Pacific & Asian Sentiment:</strong> The AUD/USD and USD/JPY pairs reflect the high volatility of the current Pacific session. The Australian Dollar is behaving as a 'Risk-On' barometer, with sentiment heavily influenced by commodity price shifts and Chinese economic stimulus news, keeping it in a 'Bullish' leaning zone. Conversely, the Japanese Yen remains under significant pressure in 'Strong Bearish' territory against the US Dollar, as the massive interest rate differential continues to encourage carry trades despite occasional verbal intervention from the Bank of Japan.</p>
+        
+        <p><strong>North American Sentiment:</strong> The US Dollar Index (DXY) serves as the anchor for global sentiment, currently holding a 'Bullish' posture as the Federal Reserve maintains its 'higher-for-longer' interest rate narrative. This strength is particularly evident against the CAD and CHF, where 'Neutral-Bullish' USD sentiment is driven by consistent Non-Farm Payroll strength and resilient US consumer spending. Traders remain focused on upcoming CPI data, which acts as the primary catalyst for shifting the broader market sentiment from caution to active risk-taking.</p>
+    </div>
+
+    <!-- Live Technical Gauges -->
+    <div class="gauge-grid">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://tradingview.com" async>
+            {
+              "interval": "1D", "width": "100%", "isTransparent": false, "height": "380", "symbol": "FX:EURUSD", "showIntervalTabs": true, "displayMode": "single", "locale": "en", "colorTheme": "light"
+            }
+            </script>
+        </div>
+    </div>
+</section>
 
         <!-- SECTION 4: VISUAL EDUCATION HUB -->
         <section id="edu-hub" class="glass-card">
