@@ -3,143 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Platform | Professional FX Education & Market Hub</title>
-    
-    <!-- SEO & SCHEMA (2026 Standards) -->
-    <meta name="description" content="Master Forex with SST Platform. Live currency tools, 24h market sentiment, and 50+ expert guides on risk management and interbank mechanics.">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialService",
-      "name": "SS Traders Education",
-      "url": "https://github.io",
-      "logo": "https://unsplash.com",
-      "description": "Educational platform for global currency trading and market analysis."
-    }
-    </script>
+    <title>Alpha Terminal | Institutional Forex Hub</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- AdSense Auto-Ads Script placeholder -->
+    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 </head>
-<body class="fintech-theme">
+<body>
 
-    <!-- 1. GLOBAL TICKER TAPE -->
-    <div class="tradingview-widget-container ticker-wrap">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://tradingview.com" async>
-        { "symbols": [{"proName": "FX_IDC:EURUSD", "title": "EUR/USD"},{"proName": "FX_IDC:GBPUSD", "title": "GBP/USD"},{"proName": "FX_IDC:AUDUSD", "title": "AUD/USD"}], "showSymbolLogo": true, "colorTheme": "dark", "displayMode": "adaptive", "locale": "en" }
-        </script>
+<!-- STICKY HEADER WITH COMPLIANT NAVIGATION -->
+<header class="alpha-header">
+    <nav class="container nav-grid">
+        <div class="logo">ALPHA<span>TERMINAL</span></div>
+        <ul class="nav-links">
+            <li><a href="#terminal">Terminal</a></li>
+            <li><a href="#tools">FX Tools</a></li>
+            <li><a href="#academy">Academy</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="media.html">Media</a></li>
+        </ul>
+        <a href="#subscribe" class="btn-primary">Get Signals</a>
+    </nav>
+</header>
+
+<main class="dashboard container">
+    
+    <!-- SECTION 1: TRADING TERMINAL (CHARTS & ANALYSIS) -->
+    <section id="terminal" class="glass-section">
+        <div class="section-title">
+            <h2>Market Intelligence Dashboard</h2>
+            <p>Live technical analysis and expert daily briefings.</p>
+        </div>
+        <div class="terminal-grid">
+            <div class="chart-box">
+                <!-- TradingView Widget Embed -->
+                <div id="tradingview_widget"></div>
+            </div>
+            <div class="analysis-feed">
+                <h3>Daily Expert Advice</h3>
+                <article class="news-item">
+                    <span class="tag">AUD/USD</span>
+                    <h4>RBA Interest Rate Outlook</h4>
+                    <p>Expert analysis on upcoming liquidity shifts...</p>
+                </article>
+                <!-- More items for AdSense "High Quality Content" -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: FX CONVERTER TOOL -->
+    <section id="tools" class="glass-section">
+        <h2>Professional Liquidity Tool</h2>
+        <div class="converter-container">
+            <!-- Your existing logic goes here -->
+            <div class="tool-ui">
+                <input type="number" id="amount" placeholder="Enter Amount">
+                <select id="fromCurrency"></select>
+                <button id="swapBtn">⇄</button>
+                <select id="toCurrency"></select>
+                <h3 id="converted-total">0.00</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE ACADEMY (EDUCATION & SENTIMENT) -->
+    <section id="academy" class="glass-section">
+        <h2>Education & Macro Hub</h2>
+        <div class="edu-bento">
+            <div class="bento-item">
+                <h4>Interest Rates</h4>
+                <p>Central Bank policy impact on global trends.</p>
+            </div>
+            <div class="bento-item">
+                <h4>Sentiment Analysis</h4>
+                <p>Retail vs. Institutional positioning (COT Data).</p>
+            </div>
+            <div class="bento-item">
+                <h4>Technical Mastery</h4>
+                <p>Advanced candlestick and liquidity patterns.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- SECTION 4: CORPORATE & LEGAL (ADSENSE REQUIREMENT) -->
+<footer class="alpha-footer">
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h4>About Alpha Terminal</h4>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Resource Hub</h4>
+            <ul>
+                <li><a href="glossary.html">FX Glossary</a></li>
+                <li><a href="media.html">Media Centre</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+        </div>
+        <!-- SECTION 5: SUBSCRIBE -->
+        <div class="footer-col" id="subscribe">
+            <h4>The Signal Newsletter</h4>
+            <p>Get institutional analysis direct to your inbox.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Email Address">
+                <button type="submit">Join</button>
+            </form>
+        </div>
     </div>
+    <p class="copyright">&copy; 2026 Alpha Terminal Education. All rights reserved.</p>
+</footer>
 
-    <!-- 2. STICKY FINTECH HEADER -->
-    <header class="fintech-header">
-        <div class="container header-flex">
-            <div class="logo">SST <span>PLATFORM</span></div>
-            <nav class="nav-dock">
-                <a href="#converter" class="nav-item active">Converter</a>
-                <a href="#market-analytics" class="nav-item">Analytics</a>
-                <a href="#edu-hub" class="nav-item">Education</a>
-                <a href="about.html" class="nav-item">About</a>
-            </nav>
-            <div class="header-action">
-                <a href="contact.html" class="btn-cta">Join Live Session</a>
-            </div>
-        </div>
-    </header>
-
-    <main class="dashboard-container container">
-        
-        <!-- SIDEBAR AD (LEFT) -->
-        <aside class="ad-sidebar left">
-            <div class="ad-box skyscraper"><span class="ad-tag">Advertisement</span></div>
-        </aside>
-
-        <!-- MAIN DASHBOARD -->
-        <div class="main-column">
-            
-            <!-- 3. INTERACTIVE UTILITY ROW -->
-            <div class="dashboard-top-row">
-                <section id="converter" class="glass-card">
-                    <div class="card-header">
-                        <h2>Currency Converter</h2>
-                        <div id="rate-text" class="status-pill">● System Online</div>
-                    </div>
-                    <div class="converter-ui">
-                        <input type="number" id="amount" value="1.00">
-                        <div class="selector-row">
-                            <select id="fromCurrency"></select>
-                            <button id="swapBtn">⇄</button>
-                            <select id="toCurrency"></select>
-                        </div>
-                        <button id="convertBtn" class="primary-btn">Calculate Exchange</button>
-                        <h2 id="converted-total" class="neon-text">0.00</h2>
-                    </div>
-                </section>
-
-                <section class="glass-card">
-                    <h2>Market Heatmap</h2>
-                    <div class="tradingview-widget-container" style="height: 320px;">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <script type="text/javascript" src="https://tradingview.com" async>
-                        { "width": "100%", "height": "320", "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD"], "isTransparent": true, "colorTheme": "dark", "locale": "en" }
-                        </script>
-                    </div>
-                </section>
-            </div>
-
-            <!-- 4. LIVE NEWS HUB (SEO BOOSTER) -->
-            <section id="news-hub" class="glass-card">
-                <h2>Live Global Forex News</h2>
-                <div class="tradingview-widget-container" style="height: 400px;">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://tradingview.com" async>
-                    { "feedMode": "market", "market": "forex", "colorTheme": "dark", "width": "100%", "height": "400" }
-                    </script>
-                </div>
-            </section>
-
-            <!-- 5. ANALYTICS & COMMENTARY -->
-            <section id="market-analytics" class="glass-card">
-                <h2>Technical Analysis Dashboard</h2>
-                <p class="analysis-text">Our proprietary 2026 sentiment engine tracks G10 currency liquidity. Note the bullish divergence in AUD/USD as RBA policy shifts. For deeper fundamental research, we refer users to <a href="https://forexlive.com" target="_blank">ForexLive</a>.</p>
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://tradingview.com" async>
-                    { "interval": "1h", "width": "100%", "isTransparent": true, "height": "400", "symbol": "FX:AUDUSD", "showIntervalTabs": true, "colorTheme": "dark" }
-                    </script>
-                </div>
-            </section>
-
-            <!-- 6. EDUCATION SILO (SEO INTERNAL LINKING) -->
-            <section id="edu-hub" class="glass-card">
-                <h2>Financial Education Hub</h2>
-                <div class="edu-grid">
-                    <a href="market-fundamentals.html" class="edu-item">
-                        <img src="https://unsplash.com" alt="Forex Fundamentals">
-                        <h4>Market Mechanics</h4>
-                    </a>
-                    <a href="capital-protection.html" class="edu-item">
-                        <img src="https://unsplash.com" alt="Capital Protection">
-                        <h4>Capital Protection</h4>
-                    </a>
-                    <!-- ... Add 20 links here for AdSense ... -->
-                </div>
-            </section>
-        </div>
-
-        <!-- SIDEBAR AD (RIGHT) -->
-        <aside class="ad-sidebar right">
-            <div class="ad-box skyscraper"><span class="ad-tag">Advertisement</span></div>
-        </aside>
-    </main>
-
-    <footer>
-        <div class="container footer-grid">
-            <div><strong>SST Platform</strong><p>Global FX Education Hub since 2026.</p></div>
-            <div><a href="privacy.html">Privacy Policy</a><br><a href="about.html">About Us</a></div>
-            <div>sstraders.education@gmail.com</div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
